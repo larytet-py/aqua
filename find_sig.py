@@ -10,6 +10,8 @@ def is_executable(filepath):
     '''
     returns (Is ELF file type, error) tuple
     '''
+    if not os.path.isfile(filepath):
+        return False, None
     try:
         resp = magic.from_file(filepath)
     except Exception as exc:

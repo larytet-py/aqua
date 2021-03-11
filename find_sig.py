@@ -30,7 +30,7 @@ def find_match(filepath, signature):
     mmap the file 
     Search the memory mapped file for the signature
     returns (found, size, error) tuple
-    The upside is that I can use regex and the search is very (~1GB/s) fast
+    The upside is that I can use regex and the search is very (~10GB/s) fast
     '''
     try:
         with open(filepath, "rb") as f:
@@ -45,8 +45,6 @@ def grep(root, signature):
     Look for the signature in the ELF files in the directory root
     '''
     pathlist = pathlib.Path(root).rglob('*')
-    processed_bytes = 0
-    start_time = time.time()
     print("Scanning started...")
     for path in pathlist:
         filepath = str(path)
@@ -65,8 +63,6 @@ def grep(root, signature):
         if match:
             #print(f"Binary file {filepath} matches")
             print(f"File {filepath} is infected!")
-        processed_bytes += file_size
-    print(f"Processed {processed_bytes/(1000*1000)}MB, average rate {processed_bytes/(1000*1000*(time.time()-start_time))}MB/s")  # 600-700MB/s
 
 def main():
     '''

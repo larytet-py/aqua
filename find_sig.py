@@ -6,12 +6,21 @@ import pathlib
 import magic
 
 def is_executable(filepath):
+    try:
+        resp = magic.from_file(filepath)
+    except Exception as exc:
+        return False, exc
 
+    return resp.startswith("ELF"), None
 
 def grep(root, pattern):
     pathlist = Path(root).rglob('*')
     for path in pathlist:
         filepath = str(path)
+        executable_file, error = is_executable(filepath)
+        if error:
+            print(f"Failed to discover the filetype for {filepath}")
+            continue
 
 
 

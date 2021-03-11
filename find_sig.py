@@ -10,7 +10,7 @@ Cutting corners: I assume SSD, this script will run slow on HDD
 1TB disk will take ~10 minutes
 
 For HDD I need to map the block device, read sequentially, search, 
-link the found block to the filepath
+link the found blocks to the filepaths
 '''
 
 import os

@@ -30,6 +30,7 @@ def find_match(filepath, signature):
     Search the memory mapped file for the signature
     returns (found, error) tuple
     Cutting corners: do not grep "busy" files, for example Python3 itself
+    The upside is that I can use regex and the search is very fast
     '''
     try:
         with open(filepath, "r+b") as f:

@@ -26,7 +26,7 @@ def is_executable(filepath):
 
 def find_match(filepath, signature):
     '''
-    mmap for the file 
+    mmap the file 
     Search the memory mapped file for the signature
     returns (found, error) tuple
     '''

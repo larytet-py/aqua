@@ -46,12 +46,14 @@ def grep(root, signature):
     print("Scanning started...")
     for path in pathlist:
         filepath = str(path)
+
         executable_file, error = is_executable(filepath)
         if error:
             print(f"Failed to discover the filetype for {filepath}: {error}")
             continue
         if not executable_file:
             continue
+
         match, error = find_match(filepath, signature)
         if error:
             print(f"Failed to grep the file {filepath}: {error}")

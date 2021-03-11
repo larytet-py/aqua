@@ -70,7 +70,7 @@ def grep(root, signature):
 
 def main():
     '''
-    Requires two arguments: folder and a file containing a signature
+    Requires two arguments: a folder and a file containing a signature
     '''
     root = sys.argv[1]
     if not os.path.exists(root):

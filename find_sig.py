@@ -26,8 +26,8 @@ def find_match(filepath, signature):
     '''
     try:
         with open(filepath, "r+b") as f:
-            mm = mmap.mmap(f.fileno(), 0)
-            return mm.find(signature) >= 0, None
+            memmory_maped_file = mmap.mmap(f.fileno(), 0)
+            return memmory_maped_file.find(signature) >= 0, None
     except Exception as exc:
         return -1, exc
 

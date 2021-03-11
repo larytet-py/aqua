@@ -2,6 +2,10 @@
 
 '''
 Find a signature in files in a folder recursively
+
+Cutting corners: single thread, single core
+Cutting corners: I assume SSD, this script will run slow on HDD 
+1TB disk will take ~10 minutes
 '''
 
 import os
@@ -83,8 +87,6 @@ def main():
         print(f"Failed to load signature from the file {signature_filename}: {exc}")
         sys.exit(1)
 
-    # Cutting corners: single thread, single core
-    # 1TB disk will take ~10 minutes
     grep(root, signature)
     
 if __name__ == "__main__":

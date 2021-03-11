@@ -13,3 +13,7 @@ pylint ./find_sig.py
 
 
 ## Usage
+
+```
+./find_sig /usr/bin lseek
+```

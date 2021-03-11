@@ -57,6 +57,9 @@ def grep(root, signature):
 
 
 def main():
+    '''
+    Two arguments: folder and a file containing a signature
+    '''
     root = sys.argv[1]
     if not os.path.exists(root):
         print(f"Path {root} not found")

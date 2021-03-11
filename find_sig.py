@@ -34,7 +34,7 @@ def find_match(filepath, signature):
     '''
     try:
         with open(filepath, "rb") as f:
-            with mmap.mmap(f.fileno(), 0, flags=mmap.MAP_PRIVATE) as memmory_maped_file:
+            with mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as memmory_maped_file:
                 return memmory_maped_file.find(signature) >= 0, memmory_maped_file.size(), None
     except Exception as exc:
         return -1, 0, exc

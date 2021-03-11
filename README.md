@@ -15,5 +15,6 @@ pylint ./find_sig.py
 ## Usage
 
 ```
-./find_sig /usr/bin lseek
+echo -n lseek > crypty.sig
+./find_sig /usr/bin crypty.sig
 ```

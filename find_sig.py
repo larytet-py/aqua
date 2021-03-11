@@ -2,11 +2,15 @@
 #!/usr/bin/env python3
 
 import os
+import sys
 import pathlib
 import magic
 import mmap
 
 def is_executable(filepath):
+    '''
+    returns (Is ELF file type, error) tuple
+    '''
     try:
         resp = magic.from_file(filepath)
     except Exception as exc:
@@ -15,16 +19,24 @@ def is_executable(filepath):
     return resp.startswith("ELF"), None
 
 def find_match(filepath, signature):
+    '''
+    mmap for the file 
+    Search the memory mapped file for the signature
+    returns (found, error) tuple
+    '''
     try:
         with open(filepath, "r+b") as f:
             mm = mmap.mmap(f.fileno(), 0)
             return mm.find(signature) >= 0, None
     except Exception as exc:
-            return -1, exc
+        return -1, exc
 
 
 def grep(root, signature):
-    pathlist = Path(root).rglob('*')
+    '''
+    Look for the signature in the ELF files in the directory root
+    '''
+    pathlist = pathlib.Path(root).rglob('*')
     print("Scanning started...")
     for path in pathlist:
         filepath = str(path)
@@ -46,14 +58,14 @@ def main():
     root = sys.argv[1]
     if not os.path.exists(root):
         print(f"Path {root} not found")
-        exit(1)
+        sys.exit(1)
     signature_filename = sys.argv[2]
     try:
         with open(signature_filename, mode='rb') as file: # b is important -> binary
             signature = file.read()
     except Exception as exc:
         print(f"Failed to load signature from the file {signature_filename}")
-        exit(1)
+        sys.exit(1)
 
     grep(root, signature)
     

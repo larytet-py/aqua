@@ -2,6 +2,7 @@
 
 '''
 Find a signature in files in a folder recursively
+Cutting corners: do not grep "busy" files, for example Python3 itself
 '''
 
 import os
@@ -59,8 +60,8 @@ def grep(root, signature):
             print(f"Failed to grep the file {filepath}: {error}")
             continue
         if match:
+            #print(f"Binary file {filepath} matches")
             print(f"File {filepath} is infected!")
-
 
 def main():
     '''

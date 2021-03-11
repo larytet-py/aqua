@@ -3,8 +3,9 @@
 import os
 import sys
 import pathlib
-import magic
 import mmap
+
+import magic
 
 def is_executable(filepath):
     '''

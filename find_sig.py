@@ -3,6 +3,8 @@
 '''
 Find a signature in files in a folder recursively
 
+Requires two arguments: a folder and a file containing a signature
+
 Cutting corners: single thread, single core
 Cutting corners: I assume SSD, this script will run slow on HDD 
 1TB disk will take ~10 minutes
@@ -72,9 +74,6 @@ def grep(root, signature):
             print(f"File {filepath} is infected!")
 
 def main():
-    '''
-    Requires two arguments: a folder and a file containing a signature
-    '''
     root = sys.argv[1]
     if not os.path.exists(root):
         print(f"Path {root} not found")

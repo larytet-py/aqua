@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+'''
+Find a signature in files in a folder recursively
+'''
+
 import os
 import sys
 import pathlib
@@ -58,7 +62,7 @@ def grep(root, signature):
 
 def main():
     '''
-    Two arguments: folder and a file containing a signature
+    Requires two arguments: folder and a file containing a signature
     '''
     root = sys.argv[1]
     if not os.path.exists(root):

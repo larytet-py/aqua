@@ -42,13 +42,13 @@ def grep(root, signature):
         filepath = str(path)
         executable_file, error = is_executable(filepath)
         if error:
-            print(f"Failed to discover the filetype for {filepath}")
+            print(f"Failed to discover the filetype for {filepath}: {error}")
             continue
         if not executable_file:
             continue
-        match, err = find_match(filepath, signature)
+        match, error = find_match(filepath, signature)
         if error:
-            print(f"Failed to grep the file {filepath}")
+            print(f"Failed to grep the file {filepath}: {error}")
             continue
         if match:
             print(f"File {filepath} is infected!")
@@ -64,7 +64,7 @@ def main():
         with open(signature_filename, mode='rb') as file: # b is important -> binary
             signature = file.read()
     except Exception as exc:
-        print(f"Failed to load signature from the file {signature_filename}")
+        print(f"Failed to load signature from the file {signature_filename}: {exc}")
         sys.exit(1)
 
     grep(root, signature)

@@ -33,8 +33,8 @@ def find_match(filepath, signature):
     The upside is that I can use regex and the search is very fast
     '''
     try:
-        with open(filepath, "r+b") as f:
-            memmory_maped_file = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
+        with open(filepath, "rb") as f:
+            memmory_maped_file = mmap.mmap(f.fileno(), 0, flags=mmap.MAP_PRIVATE)
             return memmory_maped_file.find(signature) >= 0, None
     except Exception as exc:
         return -1, exc

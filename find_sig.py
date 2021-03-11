@@ -2,7 +2,6 @@
 
 '''
 Find a signature in files in a folder recursively
-Cutting corners: do not grep "busy" files, for example Python3 itself
 '''
 
 import os
@@ -30,6 +29,7 @@ def find_match(filepath, signature):
     mmap the file 
     Search the memory mapped file for the signature
     returns (found, error) tuple
+    Cutting corners: do not grep "busy" files, for example Python3 itself
     '''
     try:
         with open(filepath, "r+b") as f:

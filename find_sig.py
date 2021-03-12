@@ -79,9 +79,9 @@ def main():
         print(f"Path {root} not found")
         sys.exit(1)
 
-    signature_filename = sys.argv[2]
     # load the signature from a file
     # Cutting corners: I assume that the signature fits in the RAM
+    signature_filename = sys.argv[2]
     try:
         with open(signature_filename, mode='rb') as file:
             signature = file.read()

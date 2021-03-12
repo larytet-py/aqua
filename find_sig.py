@@ -78,8 +78,8 @@ def main():
     if not os.path.exists(root):
         print(f"Path {root} not found")
         sys.exit(1)
-    signature_filename = sys.argv[2]
 
+    signature_filename = sys.argv[2]
     # load the signature from a file
     # Cutting corners: I assume that the signature fits in the RAM
     try:

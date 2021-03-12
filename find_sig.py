@@ -4,10 +4,10 @@
 Find a signature in files in a folder recursively
 
 Requires two arguments: a folder and a file containing a signature
+1TB disk will take ~10 minutes
 
 Cutting corners: single thread, single core
 Cutting corners: I assume SSD, this script will run slow on HDD 
-1TB disk will take ~10 minutes
 
 For HDD I need to map the block device, read sequentially, search, 
 link the found blocks to the filepaths

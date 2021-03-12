@@ -39,8 +39,8 @@ def find_match(filepath, signature):
     mmap the file 
     Search the memory mapped file for the signature
     returns (found, size, error) tuple
-    The upside is that I can use regex and the search is quite fast topping
-    around 10Gbytes/s
+    The upside is that I can use regex and the search is quite fast with 
+    sustainable rate areound 2GBytes/ and toping around 10Gbytes/s
     '''
     try:
         with open(filepath, "rb") as f:

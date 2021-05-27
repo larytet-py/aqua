@@ -56,8 +56,8 @@ def grep(root, signature):
     '''
     # Cutting corners:Is rglob returning an iterator or list?
     # iglob() will make sense for large file systems
-    # Cutting corners: what is the file systen chages while I walk 
-    # the walk?
+    # Cutting corners: what if the file system changes while 
+    # I am walking the walk?
     pathlist = pathlib.Path(root).rglob('*')
     print("Scanning started...")
     for path in pathlist:

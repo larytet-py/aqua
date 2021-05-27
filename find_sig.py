@@ -54,6 +54,10 @@ def grep(root, signature):
     '''
     Look for the signature in the ELF files in the directory root
     '''
+    # Cutting corners:Is rglob returning an iterator or list?
+    # iglob() will make sense for large file systems
+    # Cutting corners: what is the file systen chages while I walk 
+    # the walk?
     pathlist = pathlib.Path(root).rglob('*')
     print("Scanning started...")
     for path in pathlist:
